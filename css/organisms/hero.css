@@ -1,0 +1,98 @@
+/* ==========================================================
+   ORGANISMO: hero (pantalla de inicio)
+   Texto a la izquierda y fotos con fundido lento a la derecha.
+   ========================================================== */
+
+.hero {
+  padding: 64px 0 72px;
+  background: var(--c-sky);
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__actions .btn--light {
+  border-color: #C1C7D0;
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #C9DCF8;
+}
+
+/* Carrusel: las fotos se apilan y solo la activa es visible */
+.hero__slider {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 24px 50px rgba(23, 43, 77, 0.18);
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+.hero__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  display: flex;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+/* El área clicable mide 44px aunque el punto se vea pequeño */
+.hero__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero__dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.hero__dot.is-active::before {
+  width: 26px;
+  background: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .hero__slider {
+    height: 320px;
+  }
+}
